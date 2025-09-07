@@ -38,8 +38,8 @@ async def last_trading_dates(
 
 @router.get("/dynamics", response_model=List[TradingResultOut])
 async def dynamics(
-    start_date: Annotated[date, Query(description="Начало периода (YYYY-MM-DD)")],
-    end_date: Annotated[date, Query(description="Конец периода (YYYY-MM-DD)")],
+    start_date: Annotated[date, Query(description="Начало периода (YYYY-MM-DD)")] = date(2025, 9, 3),
+    end_date: Annotated[date, Query(description="Конец периода (YYYY-MM-DD)")] = date(2025, 9, 4),
     oil_id: Annotated[Optional[str], Query()] = None,
     delivery_type_id: Annotated[Optional[str], Query()] = None,
     delivery_basis_id: Annotated[Optional[str], Query()] = None,
@@ -91,7 +91,7 @@ async def trading_results(
     Получает результаты торгов за после дни (days).
 
     Обязательный параметр: days (по умолчанию 1) - сколько последних торговых дат включить.
-    Обоснование: термин в условии задачи 'последние торги' без уточнения размера неоднозначен.
+    Обоснование: термин в условии задачи <<последние торги>> без уточнения размера неоднозначен.
     Фильтры по oil_id, delivery_type_id, delivery_basis_id - опциональны.
 
     Return: List[TradingResultOut]: Список Pydantic объектов с результатами торгов.
@@ -103,7 +103,7 @@ async def trading_results(
         "delivery_basis_id": delivery_basis_id,
         "limit": limit,
     }
-    key = make_cache_key("results", params)
+    key = make_cache_key("/results", params)
     cached = await cache_get(key)
     if cached:
         return cached
