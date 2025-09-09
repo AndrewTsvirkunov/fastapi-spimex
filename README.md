@@ -41,7 +41,7 @@ source .venv/bin/activate
 pip install -r requirements.txt
 ```
 ### 5. .env
-Создайте файл с переменными окружения, опираясь на env.example.<br>
+Создайте файл с переменными окружения, опираясь на .env.example.<br>
 Настройте подключение к БД, Redis и таймзону.
 
 ### 6. Примените миграции
