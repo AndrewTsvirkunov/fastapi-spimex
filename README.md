@@ -41,25 +41,10 @@ source .venv/bin/activate
 pip install -r requirements.txt
 ```
 ### 5. .env
-Создайте файл с переменными окружения, опираясь на env.example
+Создайте файл с переменными окружения, опираясь на env.example.<br>
+Настройте подключение к БД, Redis и таймзону.
 
-### 6. Сделайте миграции
-Инициализация
-```
-alembic init -t async migrations
-```
-Добавьте в migrations/env.py
-```python
-from app.models import Base
-target_metadata = Base.metadata
-```
-Добавьте url к своей БД в alembic.ini
-
-Генерация новой миграции
-```
-alembic revision --autogenerate -m "Init migration"
-```
-Применение миграций
+### 6. Примените миграции
 ```
 alembic upgrade head
 ```

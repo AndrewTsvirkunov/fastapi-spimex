@@ -4,9 +4,6 @@
 __pycache__/
 *.py[cod]
 
-migrations/
-alembic.ini
-
 .env
 .env.local
 
