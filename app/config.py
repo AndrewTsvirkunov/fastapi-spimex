@@ -8,8 +8,10 @@ DB_PASS = os.getenv("DB_PASS")
 DB_HOST = os.getenv("DB_HOST")
 DB_PORT = os.getenv("DB_PORT")
 DB_NAME = os.getenv("DB_NAME")
+TEST_DB_NAME = os.getenv("TEST_DB_NAME")
 
 DATABASE_URL = f"postgresql+asyncpg://{DB_USER}:{DB_PASS}@{DB_HOST}:{DB_PORT}/{DB_NAME}"
+TEST_DATABASE_URL = f"postgresql+asyncpg://{DB_USER}:{DB_PASS}@{DB_HOST}:{DB_PORT}/{DB_NAME}"
 
 REDIS_URL = os.getenv("REDIS_URL")
 CACHE_TZ = os.getenv("CACHE_TZ")
